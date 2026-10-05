@@ -70,14 +70,17 @@ The backend is built with **Django REST Framework**, while the frontend is devel
 <img width="949" height="409" alt="image" src="https://github.com/user-attachments/assets/d06c936c-47db-4676-b533-91800820cbda" />
 
 ### Courses
+<img width="800" height="276" alt="image" src="https://github.com/user-attachments/assets/c03938f4-3f50-481e-b120-4182fbc0552f" />
 
 ### Assignments
+<img width="807" height="271" alt="image" src="https://github.com/user-attachments/assets/20f98c3c-a38c-4f65-b925-9a5b0187d28f" />
 
 ### Submissions & Results
+<img width="806" height="289" alt="image" src="https://github.com/user-attachments/assets/c1362b05-c4d0-4da0-83a7-7ebb5ef0a24c" />
+<img width="806" height="271" alt="image" src="https://github.com/user-attachments/assets/28762e26-ccf9-479c-96cc-124e10914b49" />
 
 ### Profile
-
----
+<img width="725" height="398" alt="image" src="https://github.com/user-attachments/assets/4749c858-5328-4f3f-8ff5-a5dd68c4911a" />
 
 ## Project Structure
 
