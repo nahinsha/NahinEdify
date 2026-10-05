@@ -186,48 +186,38 @@ def get_tokens_for_user(user):
 
 
 class LoginView(APIView):
-    """Login view using phone and password."""
-
     permission_classes = [AllowAny]
 
     def post(self, request):
-        serializer = LoginSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        phone = serializer.validated_data["phone"]
-        password = serializer.validated_data["password"]
-
         try:
+            serializer = LoginSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+
+            phone = serializer.validated_data["phone"]
+            password = serializer.validated_data["password"]
+
             profile = Profile.objects.select_related("user").get(phone=phone)
-        except Profile.DoesNotExist:
-            return Response(
-                {"error": "Invalid phone or password"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+            user = profile.user
 
-        user = profile.user
+            if not user.check_password(password):
+                return Response(
+                    {"error": "Invalid phone or password"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
 
-        if not user.check_password(password):
-            return Response(
-                {"error": "Invalid phone or password"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        try:
             tokens = get_tokens_for_user(user)
-        except Exception:
-            return Response(
-                {"error": "Unable to create login token"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            )
 
-        return Response({
-            "message": "Login successful",
-            "user_id": user.id,
-            "username": user.username,
-            "role": role_of(user),
-            "tokens": tokens,
-        })
+            return Response({
+                "message": "Login successful",
+                "user_id": user.id,
+                "username": user.username,
+                "role": role_of(user),
+                "tokens": tokens,
+            })
+
+        except Exception as e:
+            print("LOGIN ERROR:", repr(e))
+            raise
 
 
 
