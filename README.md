@@ -1,114 +1,85 @@
-<div align="center">
+# NahinEdify
 
-# 🎓 NahinEdify
+**A full-stack Learning Management System built with Django REST Framework and React.**
 
-### Learning Management System
-
-A full-stack LMS for managing courses, lessons, assignments, submissions, enrollments, and results.
-
-<br>
-
-![Django](https://img.shields.io/badge/Django-5.2-092E20?style=for-the-badge\&logo=django\&logoColor=white)
-![DRF](https://img.shields.io/badge/DRF-3.15-A30000?style=for-the-badge\&logo=django\&logoColor=white)
-![React](https://img.shields.io/badge/React-19-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge\&logo=vite\&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge\&logo=tailwindcss\&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=for-the-badge\&logo=sqlite\&logoColor=white)
-
-<br>
-
-**Django REST Framework + React + JWT**
-
-</div>
+NahinEdify is a role-based Learning Management System designed to manage courses, lessons, assignments, submissions, grading, and user accounts through a RESTful API and modern React frontend.
 
 ---
 
-## 📌 Overview
+## Overview
 
-**NahinEdify** is a full-stack Learning Management System designed to manage academic activities through a role-based platform.
+NahinEdify provides a centralized platform for managing learning activities between **administrators, teachers, and students**.
 
-The system provides separate permissions and workflows for **Administrators, Teachers, and Students**, with a Django REST API powering a modern React frontend.
-
-The project focuses on practical full-stack development, REST API design, authentication, authorization, CRUD operations, and responsive user interfaces.
+The backend is built with **Django REST Framework**, while the frontend is developed using **React and Vite**. Authentication is handled using **JWT**, with role-based permissions controlling access to different resources.
 
 ---
 
-## ✨ Features
+## Features
 
-* 🔐 JWT-based authentication
-* 📱 Phone number login
-* 👥 Role-based access control
-* 👨‍💼 Admin, Teacher & Student roles
-* 📚 Course management
-* 📖 Lesson management
-* 📝 Assignment management
-* 📤 Assignment submission
-* 📊 Grading & results
-* 🎓 Course enrollment
-* 🔎 Search & filtering
-* 📧 Password reset through email
-* 🛡️ Protected API endpoints
-* 📱 Responsive frontend
-* 🔗 RESTful API architecture
-
----
-
-## 🛠️ Tech Stack
-
-| Category            | Technologies                          |
-| ------------------- | ------------------------------------- |
-| **Backend**         | Python, Django, Django REST Framework |
-| **Authentication**  | Simple JWT                            |
-| **Frontend**        | React, JavaScript, Vite               |
-| **Styling**         | Tailwind CSS                          |
-| **Charts**          | Recharts                              |
-| **Database**        | SQLite                                |
-| **Version Control** | Git, GitHub                           |
-| **Development**     | VS Code                               |
+* JWT-based authentication
+* Phone number login
+* Role-based access control
+* Admin, Teacher, and Student roles
+* Course management
+* Lesson management
+* Assignment management
+* Assignment submission
+* Grading and results
+* Enrollment management
+* Search and filtering
+* Password reset through email
+* Protected API endpoints
+* Responsive React frontend
+* RESTful API architecture
 
 ---
 
-## 📸 Screenshots
+## Tech Stack
 
-### 🔐 Login
+### Backend
 
-<p align="center">
-  <img src="docs/screenshots/login.png" alt="Login" width="900">
-</p>
+* Python
+* Django
+* Django REST Framework
+* Simple JWT
+* SQLite
 
-### 📊 Dashboard
+### Frontend
 
-<p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="Dashboard" width="900">
-</p>
+* React
+* JavaScript
+* Vite
+* Tailwind CSS
+* Recharts
 
-### 📚 Courses
+### Tools
 
-<p align="center">
-  <img src="docs/screenshots/courses.png" alt="Courses" width="900">
-</p>
-
-### 📝 Assignments
-
-<p align="center">
-  <img src="docs/screenshots/assignments.png" alt="Assignments" width="900">
-</p>
-
-### 📤 Submissions & Results
-
-<p align="center">
-  <img src="docs/screenshots/submissions.png" alt="Submissions and Results" width="900">
-</p>
-
-### 👤 Profile
-
-<p align="center">
-  <img src="docs/screenshots/profile.png" alt="Profile" width="900">
-</p>
+* Git
+* GitHub
+* VS Code
 
 ---
 
-## 🏗️ Project Structure
+## Screenshots
+
+### Login
+
+
+
+### Dashboard
+<img width="949" height="409" alt="image" src="https://github.com/user-attachments/assets/d06c936c-47db-4676-b533-91800820cbda" />
+
+### Courses
+
+### Assignments
+
+### Submissions & Results
+
+### Profile
+
+---
+
+## Project Structure
 
 ```text
 NahinEdify/
@@ -139,7 +110,7 @@ NahinEdify/
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -148,7 +119,11 @@ git clone https://github.com/nahinsha/NahinEdify.git
 cd NahinEdify
 ```
 
+---
+
 ### 2. Backend Setup
+
+Open the backend directory:
 
 ```bash
 cd backend
@@ -160,17 +135,19 @@ Create a virtual environment:
 python -m venv venv
 ```
 
-Activate it on Windows:
+Activate the virtual environment on Windows:
 
 ```bash
 venv\Scripts\activate
 ```
 
-Install dependencies:
+Install the dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+---
 
 ### 3. Environment Variables
 
@@ -181,9 +158,13 @@ SECRET_KEY=your-secret-key
 DEBUG=True
 ```
 
-> ⚠️ Never commit the `.env` file to GitHub.
+The `.env` file should not be committed to GitHub.
 
-### 4. Database Migration
+---
+
+### 4. Database Setup
+
+Run migrations:
 
 ```bash
 python manage.py makemigrations
@@ -196,71 +177,89 @@ Create an admin account:
 python manage.py createsuperuser
 ```
 
-### 5. Start the Backend
+---
+
+### 5. Run the Backend
+
+Start the Django development server:
 
 ```bash
 python manage.py runserver
 ```
 
-Backend API:
+The backend API will be available at:
 
 ```text
 http://127.0.0.1:8000/api/
 ```
 
-### 6. Start the Frontend
+---
 
-Open another terminal:
+### 6. Frontend Setup
+
+Open another terminal and go to the frontend directory:
 
 ```bash
 cd frontend
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Run the development server:
+
+```bash
 npm run dev
 ```
 
-Then open the URL provided by Vite in your browser.
+The frontend will be available at the URL shown by Vite in the terminal.
 
 ---
 
-## 👥 User Roles & Permissions
-
-| Role        | Main Responsibilities                                            |
-| ----------- | ---------------------------------------------------------------- |
-| **Admin**   | Full system management                                           |
-| **Teacher** | Manage courses, lessons, assignments, submissions & grading      |
-| **Student** | Access courses, lessons, assignments, submit work & view results |
+## User Roles & Permissions
 
 ### Admin
 
-* Manage users
-* Manage courses
-* Manage lessons
-* Manage assignments
-* Manage enrollments
-* Manage submissions
-* Manage grades
+The administrator has full access to the system and can manage:
+
+* Users
+* Courses
+* Lessons
+* Assignments
+* Enrollments
+* Submissions
+* Grades
+* Other system resources
 
 ### Teacher
 
-* Create and manage courses
-* Manage lessons
-* Create assignments
-* View student submissions
-* Grade assignments
+Teachers can manage learning content and academic activities, including:
+
+* Courses
+* Lessons
+* Assignments
+* Enrollments
+* Student submissions
+* Grading
 
 ### Student
 
-* View courses
-* Access lessons
-* View assignments
+Students can:
+
+* View available courses
+* View lessons
+* Access assignments
 * Submit assignments
-* View grades and results
+* View their grades and results
 
 ---
 
-## 🔗 API Overview
+## API Overview
 
-NahinEdify provides RESTful APIs for the main LMS resources.
+The backend provides RESTful API endpoints for the main LMS resources.
 
 ```text
 /api/login/
@@ -273,81 +272,34 @@ NahinEdify provides RESTful APIs for the main LMS resources.
 /api/enrollments/
 ```
 
-Protected endpoints require a valid JWT access token.
+Authentication-protected endpoints require a valid JWT access token.
 
 ---
 
-## 🔐 Authentication
+## Authentication
 
-NahinEdify uses **JSON Web Token (JWT)** authentication.
+NahinEdify uses **JWT (JSON Web Token)** authentication.
 
-After a successful login, the API returns:
+After successful login, the API provides:
 
-```text
-Access Token
-Refresh Token
-```
+* Access Token
+* Refresh Token
 
-The access token is used to access protected resources according to the authenticated user's role.
+The access token is used to access protected API endpoints according to the user's role and permissions.
 
 ---
 
-## 📁 Main Modules
+## GitHub Repository
 
-The system is organized around the following core LMS resources:
-
-* Users & Profiles
-* Courses
-* Enrollments
-* Lessons
-* Assignments
-* Submissions
-* Grades
-
-Each resource is handled through the Django REST Framework API and connected to the React frontend.
+**Repository:**
+https://github.com/nahinsha/NahinEdify
 
 ---
 
-## 🔗 GitHub Repository
+## Author
 
-<p align="center">
+**Nahin Shahariar**
 
-<a href="https://github.com/nahinsha/NahinEdify">
-  <img src="https://img.shields.io/badge/View%20on-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-</a>
-
-</p>
-
----
-
-## 👨‍💻 Author
-
-<div align="center">
-
-### Nahin Shahariar
-
-**Computer Science & Engineering**
-
-<br>
-
-<a href="https://github.com/nahinsha">
-  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white">
-</a>
-&nbsp;
-<a href="https://linkedin.com/in/md-shahariar-nahin-a5b147301">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white">
-</a>
-&nbsp;
-<a href="https://shahariar-nahin-portfolio.vercel.app/">
-  <img src="https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=vercel&logoColor=white">
-</a>
-
-</div>
-
----
-
-<div align="center">
-
-**Built with Django REST Framework and React.**
-
-</div>
+* GitHub: https://github.com/nahinsha
+* LinkedIn: https://linkedin.com/in/md-shahariar-nahin-a5b147301
+* Portfolio: https://shahariar-nahin-portfolio.vercel.app/
