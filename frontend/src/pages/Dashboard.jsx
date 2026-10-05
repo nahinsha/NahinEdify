@@ -102,6 +102,8 @@ export default function Dashboard() {
       try {
         const totals = await Promise.all(tiles.map((tile) => tile.api.count()));
         const stats = await getEnrollmentStats();
+        console.log(stats);
+        console.log(stats.map(item => item.total));
         setEnrollmentStats(stats); //Kintu stats ekhon sudhu load() function-er vitore ekta temporary variable. React UI eta theke directly graph banate parbe na, karon amader age data-ta state-e rakhte hobe।
         // console.log(stats);
 
@@ -131,7 +133,7 @@ export default function Dashboard() {
     <div>
       <PageHeader
         title={`Welcome back, ${user?.username ?? "there"}`}
-        subtitle="A quick count of everything in the system."
+        subtitle="Here’s a quick look at what’s happening today."
       />
 
       <Alert className="ml-auto w-fit max-w-md" onDismiss={() => setError("")}>
@@ -194,7 +196,7 @@ export default function Dashboard() {
            
               {notices.map((notice) => (
                 <div key={notice.id}>
-                  <h3>{notice.title}</h3>
+                  <h1 className="text-base font-semibold text-slate-800"> 📢 {notice.title}</h1>
                   <p>{notice.message}</p>
                 </div>
               ))}
