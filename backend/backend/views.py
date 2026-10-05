@@ -143,85 +143,43 @@ def get_tokens_for_user(user):
 
 
 
-# class LoginView(APIView):
-#     """Login view using phone and password."""
-
-#     permission_classes = [AllowAny]#Eta DRF-er permission setting. Er kaj holo—ei API-te request korar jonno age theke login kora thaka lagbe na.
-# #Input valid kina check....Frontend theke phone ar password ashche kina check kore. Required field missing hole error dibe.
-#     def post(self, request):
-#         serializer = LoginSerializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         phone = serializer.validated_data['phone']
-#         password = serializer.validated_data['password']
-
-# #Phone diye user khuje ber kore...Profile table-e oi phone number ache kina check kore.
-# # Thakle oi Profile-er sathe related Django User ber kore.
-#         try:
-#             profile = Profile.objects.get(phone=phone)
-#             user = profile.user
-#         except Profile.DoesNotExist:
-#             return Response({'error': 'Invalid phone or password'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-# #Password thik kina check kore,,,User je password dise, seta database-e stored hashed password-er
-# #  sathe match kore kina check kore.#  Match na korle login fail.
-#         if not user.check_password(password):
-#             return Response({'error': 'Invalid password'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-# #Login successful hole JWT token generate kore
-#         tokens = get_tokens_for_user(user)
-#         return Response({#Tarpor frontend-ke:pathay
-#             'message': 'Login successful',
-#             'user_id': user.id,
-#             'username': user.username,
-#             # The frontend uses this to decide which buttons to show. It is
-#             # not what enforces anything: the permission classes do that.
-#             'role': role_of(user),
-#             'tokens': tokens
-#         })
-
-
-
-
-
 class LoginView(APIView):
-    permission_classes = [AllowAny]
+    """Login view using phone and password."""
 
+    permission_classes = [AllowAny]#Eta DRF-er permission setting. Er kaj holo—ei API-te request korar jonno age theke login kora thaka lagbe na.
+#Input valid kina check....Frontend theke phone ar password ashche kina check kore. Required field missing hole error dibe.
     def post(self, request):
+        serializer = LoginSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        phone = serializer.validated_data['phone']
+        password = serializer.validated_data['password']
+
+#Phone diye user khuje ber kore...Profile table-e oi phone number ache kina check kore.
+# Thakle oi Profile-er sathe related Django User ber kore.
         try:
-            serializer = LoginSerializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-
-            phone = serializer.validated_data["phone"]
-            password = serializer.validated_data["password"]
-
-            profile = Profile.objects.select_related("user").get(phone=phone)
+            profile = Profile.objects.get(phone=phone)
             user = profile.user
-
-            if not user.check_password(password):
-                return Response(
-                    {"error": "Invalid phone or password"},
-                    status=status.HTTP_400_BAD_REQUEST
-                )
-
-            tokens = get_tokens_for_user(user)
-
-            return Response({
-                "message": "Login successful",
-                "user_id": user.id,
-                "username": user.username,
-                "role": role_of(user),
-                "tokens": tokens,
-            })
-
-        except Exception as e:
-            print("LOGIN ERROR:", repr(e))
-            raise
+        except Profile.DoesNotExist:
+            return Response({'error': 'Invalid phone or password'}, status=status.HTTP_400_BAD_REQUEST)
 
 
+#Password thik kina check kore,,,User je password dise, seta database-e stored hashed password-er
+#  sathe match kore kina check kore.#  Match na korle login fail.
+        if not user.check_password(password):
+            return Response({'error': 'Invalid password'}, status=status.HTTP_400_BAD_REQUEST)
 
 
+#Login successful hole JWT token generate kore
+        tokens = get_tokens_for_user(user)
+        return Response({#Tarpor frontend-ke:pathay
+            'message': 'Login successful',
+            'user_id': user.id,
+            'username': user.username,
+            # The frontend uses this to decide which buttons to show. It is
+            # not what enforces anything: the permission classes do that.
+            'role': role_of(user),
+            'tokens': tokens
+        })
 
 class ProtectedView(APIView):
     """Your own account: GET to read it, PATCH to change it.

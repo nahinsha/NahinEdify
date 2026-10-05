@@ -10,9 +10,8 @@
 
 // const BASE_URL = import.meta.env.VITE_API_URL ?? "http://127.0.0.1:8000/api";
 
-// const BASE_URL = "http://127.0.0.1:8000/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL;//render diye porduction er jonno
+const BASE_URL = "http://127.0.0.1:8000/api";
 const TOKEN_KEY = "lms_access_token";
 const USER_KEY = "lms_user";
 
